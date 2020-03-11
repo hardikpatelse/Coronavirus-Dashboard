@@ -8,17 +8,28 @@
   <div class="content container-fluid">
 
     <div class="row">
+
+
       <div class="col col-lg-3">
-        <div class="col-lg-12 col-sm-12" style="background-color: #445175; width: inherit; border-radius: 15px; box-shadow: 0 0 30px rgb(58, 68, 100); margin: auto;">
-          <h2 style="color: #DFDFEF; font-size: 35px; text-align: center; padding-top: 15px; font-weight: bolder;">
+        <div class="container--wrap padding">
+          <h2 style="color: #DFDFEF; font-size: 35px; text-align: center; padding-top: 15px; font-weight: bolder; margin-bottom: 20px;">
             <svg style="width: 35px;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bullhorn" class="svg-inline--fa fa-bullhorn fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-              <path fill="currentColor" d="M576 240c0-23.63-12.95-44.04-32-55.12V32.01C544 23.26 537.02 0 512 0c-7.12 0-14.19 2.38-19.98 7.02l-85.03 68.03C364.28 109.19 310.66 128 256 128H64c-35.35 0-64 28.65-64 64v96c0 35.35 28.65 64 64 64h33.7c-1.39 10.48-2.18 21.14-2.18 32 0 39.77 9.26 77.35 25.56 110.94 5.19 10.69 16.52 17.06 28.4 17.06h74.28c26.05 0 41.69-29.84 25.9-50.56-16.4-21.52-26.15-48.36-26.15-77.44 0-11.11 1.62-21.79 4.41-32H256c54.66 0 108.28 18.81 150.98 52.95l85.03 68.03a32.023 32.023 0 0 0 19.98 7.02c24.92 0 32-22.78 32-32V295.13C563.05 284.04 576 263.63 576 240zm-96 141.42l-33.05-26.44C392.95 311.78 325.12 288 256 288v-96c69.12 0 136.95-23.78 190.95-66.98L480 98.58v282.84z">
+              <path fill="currentColor"
+                d="M576 240c0-23.63-12.95-44.04-32-55.12V32.01C544 23.26 537.02 0 512 0c-7.12 0-14.19 2.38-19.98 7.02l-85.03 68.03C364.28 109.19 310.66 128 256 128H64c-35.35 0-64 28.65-64 64v96c0 35.35 28.65 64 64 64h33.7c-1.39 10.48-2.18 21.14-2.18 32 0 39.77 9.26 77.35 25.56 110.94 5.19 10.69 16.52 17.06 28.4 17.06h74.28c26.05 0 41.69-29.84 25.9-50.56-16.4-21.52-26.15-48.36-26.15-77.44 0-11.11 1.62-21.79 4.41-32H256c54.66 0 108.28 18.81 150.98 52.95l85.03 68.03a32.023 32.023 0 0 0 19.98 7.02c24.92 0 32-22.78 32-32V295.13C563.05 284.04 576 263.63 576 240zm-96 141.42l-33.05-26.44C392.95 311.78 325.12 288 256 288v-96c69.12 0 136.95-23.78 190.95-66.98L480 98.58v282.84z">
               </path>
             </svg> Site Update</h2>
-          <p style="color: #DFDFEF;">
-            </p><p style="color: #DFDFEF; font-size: 15px;"><b>NEW:</b> Sortable and Searchable tables! And now a newsletter! Sign up <a style="text-decoration: underline; color: tomato;" href="/email">here</a>, or in the navbar! (If the tables arent working for you do cmd-shift-r)<br> <b>UPCOMING:</b> Translations, timeline, and lots of exciting things!!! Stay tuned :)</p>
-          <p></p>
+          <h4 class="sub-header">NEW:</h4>
+          <p class="default-copy">
+            Sortable and searchable tables, and recovery metrics. <br>
+            Join the newsletter! Sign up <a class="text--cta-link" href="/email">here</a>.
+          </p>
+          <h4 class="sub-header">UPCOMING:</h4>
+          <p class="default-copy">
+            Translations, timeline, and more.
+          </p>
         </div>
+
+
         <div class="container--wrap">
           <p style="color: #DFDFEF; font-size: 30px; text-align: center; padding-top: 15px; font-weight: bolder; margin-bottom: 0;">
             Quick Facts</p>
@@ -93,22 +104,9 @@
 
               <div class="sorted-table__container">
                 <h2><%= region %></h2>
-                <div class="recovery-meter-container d-block d-sm-none">
-                  <span class="recovery-meter-label">
-                    Recovered:
-                  </span>
-                  <span class="recovery-meter">
-                    <span class="recovery-meter-stat">
-                      <%= Math.round(data[region].recoveryRate) %>%
-                    </span>
-                    <span class="recovery-meter-progress" style="width: <%= data[region].recoveryRate %>%">
-                      &nbsp;
-                    </span>
-                  </span>
-                </div>
               </div>
 
-              <div class="recovery-meter-container d-none d-sm-block">
+              <div class="recovery-meter-container">
                 <span class="recovery-meter-label">
                   Recovered:
                 </span>
@@ -162,7 +160,7 @@
               <tbody>
                 <% for( let i = 0; i < data[region].regions.length; i++ ) { %>
                 <% if (data[region].regions[i].country != "Wuhan") { %>
-                  <% if (data[region].regions[i].country != "Queue") { %>
+                <% if (data[region].regions[i].country != "Queue") { %>
                 <tr>
                   <td>
                     <span class="text--gray"><%= data[region].regions[i].country %></span>
@@ -207,8 +205,8 @@
           <% }) %>
 
           <% if ( data.displayOrder.length % 2 !== 0) { %>
-            <div class="col ">
-            </div>
+          <div class="col ">
+          </div>
           <% } %>
         </div>
       </div>
@@ -219,55 +217,55 @@
   <%- include('./partials/scripts'); -%>
   <script>
     const config = {
-        responsive: true,
-        "scrollY": "370px",
-        "scrollCollapse": true,
-        "language": {
-          "search": "&#128269;",
-          "searchPlaceholder": "search data"
+      responsive: true,
+      "scrollY": "370px",
+      "scrollCollapse": true,
+      "language": {
+        "search": "&#128269;",
+        "searchPlaceholder": "search data"
+      },
+      "autoWidth": true,
+      "bInfo": false,
+      "bPaginate": false,
+      "order": [
+        [1, "desc"]
+      ],
+      "columnDefs": [{
+          responsivePriority: 2,
+          targets: 1
         },
-        "autoWidth": true,
-        "bInfo": false,
-        "bPaginate": false,
-        "order": [
-          [1, "desc"]
-        ],
-          "columnDefs": [{
-              responsivePriority: 2,
-              targets: 1
-            },
-            {
-              className: "text--center",
-              "targets": [1, 2, 3, 4]
-            }
-          ],
-          "columns": [{
-              "width": '30%'
-            },
-            {
-              "width": "17.5%"
-            },
-            {
-              "width": "17.5%"
-            },
-
-            {
-              "width": "17.5%"
-            },
-            {
-              "width": "17.5%"
-            }
-          ]
+        {
+          className: "text--center",
+          "targets": [1, 2, 3, 4]
         }
+      ],
+      "columns": [{
+          "width": '30%'
+        },
+        {
+          "width": "17.5%"
+        },
+        {
+          "width": "17.5%"
+        },
 
-        $(document).ready(function() {
-          $('#sortable_table_Global').DataTable(config);
-          $('#sortable_table_USA').DataTable(config);
-          $('#sortable_table_China').DataTable(config);
-          $('#sortable_table_Canada').DataTable(config);
-          $('#sortable_table_Australia').DataTable(config);
-          $('#sortable_table_LatinAmerica').DataTable(config);
-        });
+        {
+          "width": "17.5%"
+        },
+        {
+          "width": "17.5%"
+        }
+      ]
+    }
+
+    $(document).ready(function() {
+      $('#sortable_table_Global').DataTable(config);
+      $('#sortable_table_USA').DataTable(config);
+      $('#sortable_table_China').DataTable(config);
+      $('#sortable_table_Canada').DataTable(config);
+      $('#sortable_table_Australia').DataTable(config);
+      $('#sortable_table_LatinAmerica').DataTable(config);
+    });
   </script>
 </body>
 
